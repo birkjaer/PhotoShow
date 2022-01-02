@@ -260,6 +260,30 @@ class Judge
 		}
 
 		if(isset($users)){
+                        /// Compare original array to new one, send email
+                        /// if it is present if the user was added.
+                        $added_users = array_diff($users, $rights->users);
+                        foreach($added_users as $user){
+                                // Find email address of user
+                                foreach(Account::findAll() as $account){
+                                        if($account['login'] ==  $user){
+                                                $email = $account['email'];
+                                                break;
+                                        }else{
+                                                $email = "";
+                                        }
+                                }
+                                if(!empty($email))
+                                {
+                                        $from = "noreply@birkjaer.dk";
+                                        //$subject = "Nye billeder tilføjet";
+                                        $msg = "Brugeren " . $user . " er blevet tildelt adgang til folderen:\n" . File::a2r($f) . "\n\nVær venlig at downloade indholdet og ikke browse rundt på siden, den er meget langsom.\nDette er en automatisk genereret email.\n\n" . "Med venlig hilsen\nAndreas\n";
+                                        $msg = wordwrap($msg, 120);
+                                        $headers = "From: $from\r\n";
+                                        //mail($mail, $subject, $msg, $headers, "-f " . $from);
+                                        mail($email, "Nye billeder", $msg, $headers);
+                                }
+                        }
 			$rights->users =	$users;
 		}
 		
