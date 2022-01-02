@@ -501,6 +501,7 @@ class Provider
 		//
 		// use popen to execute a unix command pipeline
 		// and grab the stdout as a php stream
+		set_time_limit(360);
 		$fp = popen('zip -n .jpg:.JPG:.jpeg:.JPEG -0 - ' . $itemsString, 'r');
 
 		// pick a bufsize that makes you happy (8192 has been suggested).
