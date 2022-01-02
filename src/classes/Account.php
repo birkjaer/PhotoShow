@@ -281,7 +281,7 @@ class Account extends Page
 			return;
 		}
 
-		if(isset($login) && (preg_match("/^[A-Z][a-zA-Z -]+$/", $login) === 0) ){
+		if(isset($login) && (preg_match("/^[A-Z][a-zA-Z -]+$/", $login) === 1) ){
 			$acc = new Account($login);
 		}else{
 			$acc = CurrentUser::$account;
