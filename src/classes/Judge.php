@@ -277,7 +277,7 @@ class Judge
                                 {
                                         $from = "noreply@birkjaer.dk";
                                         //$subject = "Nye billeder tilføjet";
-                                        $msg = "Brugeren " . $user . " er blevet tildelt adgang til folderen:\n" . File::a2r($f) . "\n\nVær venlig at downloade indholdet og ikke browse rundt på siden, den er meget langsom.\nDette er en automatisk genereret email.\n\n" . "Med venlig hilsen\nAndreas\n";
+                                        $msg = "Brugeren " . $user . " er blevet tildelt adgang til folderen:\n" . File::a2r($f) . "\n\nVær venlig at downloade indholdet og ikke browse rundt på siden, den er meget langsom.\nDette er en automatisk genereret email og kan ikke besvares.\n\n" . "Med venlig hilsen\nAndreas\n";
                                         $msg = wordwrap($msg, 120);
                                         $headers = "From: $from\r\n";
                                         //mail($mail, $subject, $msg, $headers, "-f " . $from);
